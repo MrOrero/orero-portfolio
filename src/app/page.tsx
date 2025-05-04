@@ -33,17 +33,16 @@ export default function Home() {
         <title>Orero Ozore - Portfolio</title>
         <meta name="description" content="Software Engineer Portfolio" />
       </Head>
-      <main className="relative w-full min-h-screen px-6 pt-5 md:pt-6 bg-black overflow-hidden">
+      <main className="relative w-full min-h-screen px-6  bg-black ">
         {/* Gradient overlay */}
         <div className="absolute inset-0 z-0">
           <div className="w-full h-full bg-gradient-to-b from-black via-[#128f8f33] to-black" />
         </div>
+        <div className="sticky top-0 pt-5 md:pt-6 z-50 mt-4 mx-auto w-fit pb-5">
+          <TabMenu onTabClick={handleTabClick} />
+        </div>
 
         <div className="relative z-10 ">
-          <div className="mx-auto w-fit pb-5">
-            <TabMenu onTabClick={handleTabClick} />
-          </div>
-
           {/* Hero */}
           <section
             ref={aboutRef}
@@ -52,11 +51,11 @@ export default function Home() {
             <button className="border-4 mx-auto   border-[#D9ECEC]  w-fit bg-white text-[#006666] text-sm px-4.5  rounded-full mb-6">
               Hey there, nice to meet you
             </button>
-            <h1 className=" text-4xl md:text-6xl font-bold mb-4">
+            <h1 className="relative text-4xl md:text-6xl font-bold mb-4">
               I&apos;m Orero{" "}
               <span className="relative">
                 Ozore
-                <span className="absolute z-50 leading-none whitespace-nowrap  bg-yellow-300 grid content-center py-2 md:py-3 border h-fit px-2.5 md:px-4  text-black -inset-y-2 md:-inset-y-3 left-4 md:left-8 rounded-xl ">
+                <span className="absolute z-50   bg-yellow-300 grid content-center py-2 md:py-3 border h-fit px-2.5 md:px-4  text-black -inset-y-2 md:-inset-y-3 left-4 md:left-8 rounded-xl ">
                   z
                 </span>
               </span>{" "}
@@ -193,7 +192,7 @@ export default function Home() {
               Got a project we could work on together?
             </p>
 
-            <div className="flex justify-center gap-6 mb-10">
+            <div className="flex justify-center gap-6 pb-10">
               <a
                 href="#"
                 className="bg-[#B0D8D8] text-[#006666] p-4 rounded-full hover:bg-[#B0D8D8]/30"
