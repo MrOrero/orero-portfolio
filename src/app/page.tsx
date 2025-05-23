@@ -51,7 +51,7 @@ export default function Home() {
             <button className="border-4 mx-auto   border-[#D9ECEC]  w-fit bg-white text-[#006666] text-sm px-4.5  rounded-full mb-6">
               Hey there, nice to meet you
             </button>
-            <h1 className="relative text-4xl md:text-6xl font-bold mb-4">
+            <h1 className="relative text-4xl md:text-6xl font-bold mb-4 text-white">
               I&apos;m Orero{" "}
               <span className="relative">
                 Ozore
@@ -83,7 +83,7 @@ export default function Home() {
                       />
                     </div>
                     <div className="space-y-1.5">
-                      <h3 className="font-medium text-lg">Orero Ozore</h3>
+                      <h3 className="font-medium text-lg text-white">Orero Ozore</h3>
                       <p className="text-[#999999] text-sm md:text-base">
                         Frontend & Backend
                       </p>
