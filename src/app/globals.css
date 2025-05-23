@@ -24,3 +24,66 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+/* Skills carousel styling */
+.skills-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.skills-track {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100px;
+}
+
+.skill-icon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  transition: all 0.2s;
+}
+
+.skill-icon:hover {
+  background-color: rgb(55, 65, 81);
+}
+
+/* Animation for small screens */
+@media (max-width: 768px) {
+  .skills-track {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    animation: slideSkills 30s linear infinite;
+    width: max-content;
+  }
+  
+  @keyframes slideSkills {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%); /* Move half the width since we duplicated items */
+    }
+  }
+}
+
+/* Hide the dots on medium screens and larger */
+@media (min-width: 768px) {
+  .skills-dots {
+    display: none;
+  }
+}

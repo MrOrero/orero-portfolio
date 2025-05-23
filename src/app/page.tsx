@@ -75,7 +75,7 @@ export default function Home() {
                   <div className="text-left flex items-center gap-4">
                     <div className="w-[60px] h-[60px] rounded-full overflow-hidden border border-white">
                       <Image
-                        src="/avatar.png"
+                        src="/profile-picture.jpg"
                         alt="Orero Ozore"
                         width={60}
                         height={60}
@@ -83,7 +83,7 @@ export default function Home() {
                       />
                     </div>
                     <div className="space-y-1.5">
-                      <h3 className="font-medium text-lg">John Doe</h3>
+                      <h3 className="font-medium text-lg">Orero Ozore</h3>
                       <p className="text-[#999999] text-sm md:text-base">
                         Frontend & Backend
                       </p>
@@ -91,14 +91,15 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-white mt-10 text-left text-sm leading-relaxed">
-                  Lorem ipsum dolor sit amet consectetur. Arcu quisque gravida
-                  massa ridiculus vulputate metus orci nisi eget. Elit in
-                  dictumst dictum nec.Lorem ipsum dolor sit amet. Elit in
-                  dictumst dictum nec.Lorem ipsum dolor sit amet. Arcu quisque
-                  gravida massa ridiculus vulputate metus orci nisi eget. Elit
-                  in dictumst dictum nec.Lorem ipsum dolor sit amet. Arcu
-                  quisque gravida massa ridiculus vulputate metus orci nisi
-                  eget.
+                  Senior Software Engineer with experience across multiple
+                  industries including Web3, AI, Fintech, Telecommunication, and
+                  Manufacturing industries. Skilled in leading cross-functional
+                  teams to deliver high-quality software solutions. A highly
+                  motivated self-starter with excellent problem-solving
+                  abilities who thrives in fast-paced environments. Committed to
+                  delivering results that exceed expectations. Strong
+                  communicator and team player able to collaborate effectively
+                  across departments.
                 </p>
               </div>
             </div>
@@ -107,17 +108,34 @@ export default function Home() {
           {/* Skills */}
           <section className="mt-16 text-center px-4">
             <h3 className="text-lg text-gray-400 mb-8">Skills</h3>
-            <div className="flex flex-wrap justify-center gap-10">
-              {["Layers", "Sisyphus", "Circooles", "Catalog", "Quot"].map(
-                (skill) => (
-                  <div key={skill} className="flex flex-col items-center">
-                    <div className="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center">
-                      <span className="text-xl">{skill[0]}</span>
+            <div className="relative overflow-hidden">
+              <div className="skills-container">
+                <div className="skills-track">
+                  {[
+                    { name: "TypeScript", logo: "/logos/typescript.png" },
+                    { name: "Java", logo: "/logos/java.png" },
+                    { name: "Angular", logo: "/logos/angular.png" },
+                    { name: "React", logo: "/logos/react.png" },
+                    { name: "NestJS", logo: "/logos/nest.jpg" },
+                    { name: "Express", logo: "/logos/express.png" },
+                    { name: "Spring Boot", logo: "/logos/springboot.png" },
+                    { name: "AWS", logo: "/logos/aws.png" },
+                  ].map((skill, index) => (
+                    <div key={`${skill.name}-${index}`} className="skill-item">
+                      <div className="skill-icon">
+                        <Image
+                          src={skill.logo}
+                          alt={skill.name}
+                          width={40}
+                          height={40}
+                          className="object-contain"
+                        />
+                      </div>
+                      <p className="mt-2 font-medium text-sm">{skill.name}</p>
                     </div>
-                    <p className="mt-2 font-semibold">{skill}</p>
-                  </div>
-                )
-              )}
+                  ))}
+                </div>
+              </div>
             </div>
           </section>
 
@@ -158,28 +176,155 @@ export default function Home() {
             </div>
 
             {/* Projects Grid */}
+            {/* Projects Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 content-center w-fit mx-auto">
-              {Array.from({ length: 9 }).map((_, idx) => (
-                <div
-                  key={idx}
-                  className="bg-[#1D1D1D] max-w-[291px] p-6 rounded-3xl text-left"
-                >
-                  <h4 className="text-lg font-semibold mb-5 ">Betacare</h4>
-                  <div className="w-full relative h-40 bg-gray-700 mb-4 rounded-md">
-                    <Image
-                      className="rounded-md"
-                      src="/placeholder.png"
-                      fill
-                      alt="project"
-                    />
+              {[
+                {
+                  title: "SIMROP",
+                  description:
+                    "SIM Registration and Operations Portal for MTN Nigeria",
+                  image: "/projects/simrop.png",
+                  link: "https://sraa.mtnnigeria.net/simrop/",
+                },
+                {
+                  title: "Kachasi",
+                  description: "Modern banking solution by Union Systems",
+                  image: "/projects/kachasi.png",
+                  link: "https://unionsystems.com/products/kachasi/",
+                },
+                {
+                  title: "Arca Money",
+                  description: "Digital financial services platform for agents",
+                  image: "/projects/arca.png",
+                  link: "https://arca.network/agents",
+                },
+                {
+                  title: "AV Card",
+                  description: "Digital card and payment solution",
+                  image: "/projects/avcard.png",
+                  link: "https://avcard.io/",
+                },
+                {
+                  title: "GiveBack",
+                  description:
+                    "Charitable donation and community support platform",
+                  image: "/projects/giveback.png",
+                  link: "https://givebackng.org/",
+                },
+                {
+                  title: "Knowledge Up",
+                  description: "Educational platform for skill development",
+                  image: "/projects/knowledgeup.png",
+                  link: "https://knowledgeup.netlify.app/",
+                },
+                {
+                  title: "MySirigu",
+                  description: "Mobile app for community engagement",
+                  image: "/projects/mysirigu.png",
+                  link: "https://onelink.to/4vpnag",
+                },
+                {
+                  title: "Betacare",
+                  description: "Healthcare service platform",
+                  image: "/placeholder.png",
+                  link: "https://betacare.ng",
+                },
+                {
+                  title: "LearnBeta",
+                  description: "Educational technology platform",
+                  image: "/projects/learnbeta.png",
+                  link: "https://learnbeta.ng",
+                },
+                {
+                  title: "BetaPlay",
+                  description: "Entertainment and gaming platform",
+                  image: "/placeholder.png",
+                  link: "https://betaplay.ng",
+                },
+                {
+                  title: "Contract Collab",
+                  description: "Contract management and collaboration tool",
+                  image: "/projects/contract.png",
+                  link: "https://contractscolab.com",
+                },
+                {
+                  title: "SpotPay",
+                  description: "Payment processing solution",
+                  image: "/projects/spotpay.png",
+                  link: "https://tpayments.abispotlight.com/",
+                },
+                {
+                  title: "ESPN Superbowl VIP",
+                  description: "Event page for ESPN Superbowl VIP experience",
+                  image: "/projects/espn.png",
+                  link: "https://espnvip.brightspotapps.com/",
+                },
+                {
+                  title: "THE MATCH: SUPERSTARS",
+                  description: "Platform for sports match events",
+                  image: "/placeholder.png",
+                  link: "https://thematch.brightspotapps.com/",
+                },
+                {
+                  title: "Onboarder",
+                  description: "Streamlined onboarding solution",
+                  image: "/placeholder.png",
+                  link: "https://onboarder-untitled.netlify.app/",
+                },
+                {
+                  title: "Influx AI",
+                  description: "AI-powered business intelligence platform",
+                  image: "/placeholder.png",
+                  link: "https://app.influxai.io/",
+                },
+              ]
+                .filter((project) =>
+                  activeTab === "featured"
+                    ? [
+                        "SIMROP",
+                        "Influx AI",
+                        "Betacare",
+                        "AV Card",
+                        "ESPN Superbowl VIP",
+                        "Kachasi",
+                      ].includes(project.title)
+                    : true
+                )
+                .map((project, idx) => (
+                  <div
+                    key={idx}
+                    className="bg-[#1D1D1D] max-w-[291px] p-6 rounded-3xl text-left"
+                  >
+                    <h4 className="text-lg font-semibold mb-5">
+                      {project.title}
+                    </h4>
+                    <div className="w-full relative h-40 bg-gray-700 mb-4 rounded-md overflow-hidden">
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Image
+                          className="rounded-md object-cover hover:scale-105 transition-transform duration-300"
+                          src={project.image}
+                          fill
+                          alt={project.title}
+                        />
+                      </a>
+                    </div>
+                    <p className="text-[#999999] text-sm">
+                      {project.description}
+                    </p>
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block mt-4 text-cyan-400 text-sm hover:text-white transition-colors duration-200"
+                    >
+                      View Project →
+                    </a>
                   </div>
-
-                  <p className="text-[#999999] text-sm">
-                    Lorem ipsum dolor sit amet consectetur. Arcu quisque gravida
-                    massa ridiculus vulputate metus orci nisi eget.
-                  </p>
-                </div>
-              ))}
+                ))}
             </div>
           </section>
 
@@ -194,19 +339,21 @@ export default function Home() {
 
             <div className="flex justify-center gap-6 pb-10">
               <a
-                href="#"
+                href="http://www.linkedin.com/in/orero-ozore-b62137249"
+                target="_blank"
                 className="bg-[#B0D8D8] text-[#006666] p-4 rounded-full hover:bg-[#B0D8D8]/30"
               >
                 <FaLinkedin size={30} />
               </a>
               <a
-                href="#"
+                href="mailto:oreroozore@gmail.com"
                 className="bg-[#B0D8D8] p-4 text-[#006666] rounded-full hover:bg-[#B0D8D8]/30"
               >
                 <FaEnvelope size={30} />
               </a>
               <a
-                href="#"
+                href="https://github.com/MrOrero"
+                target="_blank"
                 className="bg-[#B0D8D8] p-4 text-[#006666]  rounded-full hover:bg-[#B0D8D8]/30"
               >
                 <FaGithub size={30} />
