@@ -297,7 +297,7 @@ export default function Home() {
                 {
                   title: "BetaPlay",
                   description: "Entertainment and gaming platform",
-                  image: "/placeholder.png",
+                  image: "/projects/betaplay.png",
                   link: "https://betaplay.ng",
                 },
                 {
