@@ -3,7 +3,7 @@
 import TabMenu from "@/components/header";
 import Head from "next/head";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 import { FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa6";
@@ -12,6 +12,65 @@ export default function Home() {
   const aboutRef = useRef<HTMLDivElement>(null);
   const projectRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
+  const skillsContainerRef = useRef<HTMLDivElement>(null);
+
+  const [activeTab, setActiveTab] = useState<"featured" | "all">("featured");
+  const [isManualScrolling, setIsManualScrolling] = useState(false);
+
+  // Auto-scroll functionality for skills
+  useEffect(() => {
+    const container = skillsContainerRef.current;
+    if (!container) return;
+
+    let scrollInterval: NodeJS.Timeout;
+    let userScrollTimeout: NodeJS.Timeout;
+
+    const startAutoScroll = () => {
+      scrollInterval = setInterval(() => {
+        if (!isManualScrolling && container) {
+          const maxScroll = container.scrollWidth - container.clientWidth;
+          const currentScroll = container.scrollLeft;
+
+          // Smooth scroll to the right
+          if (currentScroll >= maxScroll) {
+            // Reset to beginning with smooth transition
+            container.scrollTo({ left: 0, behavior: "smooth" });
+          } else {
+            // Continue scrolling right
+            container.scrollBy({ left: 120, behavior: "smooth" });
+          }
+        }
+      }, 2000); // Scroll every 2 seconds
+    };
+
+    const handleUserScroll = () => {
+      setIsManualScrolling(true);
+      clearTimeout(userScrollTimeout);
+
+      // Resume auto-scroll after 3 seconds of no user interaction
+      userScrollTimeout = setTimeout(() => {
+        setIsManualScrolling(false);
+      }, 3000);
+    };
+
+    // Only auto-scroll on mobile/tablet screens
+    const mediaQuery = window.matchMedia("(max-width: 1023px)");
+
+    if (mediaQuery.matches) {
+      startAutoScroll();
+      container.addEventListener("scroll", handleUserScroll);
+      container.addEventListener("touchstart", handleUserScroll);
+    }
+
+    return () => {
+      clearInterval(scrollInterval);
+      clearTimeout(userScrollTimeout);
+      if (container) {
+        container.removeEventListener("scroll", handleUserScroll);
+        container.removeEventListener("touchstart", handleUserScroll);
+      }
+    };
+  }, [isManualScrolling]);
 
   const handleTabClick = (tab: string) => {
     const sectionMap: Record<string, React.RefObject<HTMLDivElement | null>> = {
@@ -26,7 +85,6 @@ export default function Home() {
     }
   };
 
-  const [activeTab, setActiveTab] = useState<"featured" | "all">("featured");
   return (
     <>
       <Head>
@@ -110,7 +168,7 @@ export default function Home() {
           {/* Skills */}
           <section className="mt-16 text-center relative z-10">
             <h3 className="text-lg text-gray-400 mb-8 px-6">Skills</h3>
-            <div className="skills-scroll-container">
+            <div ref={skillsContainerRef} className="skills-scroll-container">
               <div className="skills-track">
                 {[
                   { name: "TypeScript", logo: "/logos/typescript.png" },
