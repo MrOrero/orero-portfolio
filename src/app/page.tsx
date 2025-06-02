@@ -83,7 +83,9 @@ export default function Home() {
                       />
                     </div>
                     <div className="space-y-1.5">
-                      <h3 className="font-medium text-lg text-white">Orero Ozore</h3>
+                      <h3 className="font-medium text-lg text-white">
+                        Orero Ozore
+                      </h3>
                       <p className="text-[#999999] text-sm md:text-base">
                         Frontend & Backend
                       </p>
@@ -108,33 +110,33 @@ export default function Home() {
           {/* Skills */}
           <section className="mt-16 text-center px-4">
             <h3 className="text-lg text-gray-400 mb-8">Skills</h3>
-            <div className="relative overflow-hidden">
-              <div className="skills-container">
-                <div className="skills-track">
-                  {[
-                    { name: "TypeScript", logo: "/logos/typescript.png" },
-                    { name: "Java", logo: "/logos/java.png" },
-                    { name: "Angular", logo: "/logos/angular.png" },
-                    { name: "React", logo: "/logos/react.png" },
-                    { name: "NestJS", logo: "/logos/nest.jpg" },
-                    { name: "Express", logo: "/logos/express.png" },
-                    { name: "Spring Boot", logo: "/logos/springboot.png" },
-                    { name: "AWS", logo: "/logos/aws.png" },
-                  ].map((skill, index) => (
-                    <div key={`${skill.name}-${index}`} className="skill-item">
-                      <div className="skill-icon">
-                        <Image
-                          src={skill.logo}
-                          alt={skill.name}
-                          width={40}
-                          height={40}
-                          className="object-contain"
-                        />
-                      </div>
-                      <p className="mt-2 font-medium text-sm">{skill.name}</p>
+            <div className="skills-scroll-container -mx-4 md:mx-0">
+              <div className="skills-track">
+                {[
+                  { name: "TypeScript", logo: "/logos/typescript.png" },
+                  { name: "Java", logo: "/logos/java.png" },
+                  { name: "Angular", logo: "/logos/angular.png" },
+                  { name: "React", logo: "/logos/react.png" },
+                  { name: "NestJS", logo: "/logos/nest.jpg" },
+                  { name: "Express", logo: "/logos/express.png" },
+                  { name: "Spring Boot", logo: "/logos/springboot.png" },
+                  { name: "AWS", logo: "/logos/aws.png" },
+                ].map((skill, index) => (
+                  <div key={`${skill.name}-${index}`} className="skill-item">
+                    <div className="skill-icon">
+                      <Image
+                        src={skill.logo}
+                        alt={skill.name}
+                        width={50}
+                        height={50}
+                        className="object-contain"
+                      />
                     </div>
-                  ))}
-                </div>
+                    <p className="mt-2 font-medium text-sm text-white">
+                      {skill.name}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </section>
@@ -281,12 +283,12 @@ export default function Home() {
                 .filter((project) =>
                   activeTab === "featured"
                     ? [
+                        "THE MATCH: SUPERSTARS",
                         "SIMROP",
                         "Influx AI",
-                        "Betacare",
+
                         "AV Card",
                         "ESPN Superbowl VIP",
-                        "Kachasi",
                       ].includes(project.title)
                     : true
                 )
