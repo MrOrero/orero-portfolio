@@ -33,7 +33,7 @@ export default function Home() {
         <title>Orero Ozore - Portfolio</title>
         <meta name="description" content="Software Engineer Portfolio" />
       </Head>
-      <main className="relative w-full min-h-screen px-6  bg-black ">
+      <main className="relative w-full min-h-screen   bg-black ">
         {/* Gradient overlay */}
         <div className="absolute inset-0 z-0">
           <div className="w-full h-full bg-gradient-to-b from-black via-[#128f8f33] to-black" />
@@ -46,7 +46,7 @@ export default function Home() {
           {/* Hero */}
           <section
             ref={aboutRef}
-            className="grid content-center items-center text-center mt-16 md:mt-20 "
+            className="grid content-center px-6 items-center text-center mt-16 md:mt-20 "
           >
             <button className="border-4 mx-auto   border-[#D9ECEC]  w-fit bg-white text-[#006666] text-sm px-4.5  rounded-full mb-6">
               Hey there, nice to meet you
@@ -108,9 +108,9 @@ export default function Home() {
           </section>
 
           {/* Skills */}
-          <section className="mt-16 text-center px-4">
-            <h3 className="text-lg text-gray-400 mb-8">Skills</h3>
-            <div className="skills-scroll-container -mx-4 md:mx-0">
+          <section className="mt-16 text-center relative z-10">
+            <h3 className="text-lg text-gray-400 mb-8 px-6">Skills</h3>
+            <div className="skills-scroll-container">
               <div className="skills-track">
                 {[
                   { name: "TypeScript", logo: "/logos/typescript.png" },
@@ -140,11 +140,10 @@ export default function Home() {
               </div>
             </div>
           </section>
-
           {/* Projects */}
           <section
             ref={projectRef}
-            className="mt-40 px-4 max-w-7xl mx-auto text-center"
+            className="mt-40 px-4 max-w-7xl mx-auto px-6 text-center"
           >
             <h2 className="text-3xl md:text-4xl font-semibold mb-2">
               Projects
