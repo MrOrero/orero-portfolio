@@ -285,7 +285,7 @@ export default function Home() {
                 {
                   title: "Betacare",
                   description: "Healthcare service platform",
-                  image: "/placeholder.png",
+                  image: "/proje.png",
                   link: "https://betacare.ng",
                 },
                 {
@@ -321,19 +321,19 @@ export default function Home() {
                 {
                   title: "THE MATCH: SUPERSTARS",
                   description: "Platform for sports match events",
-                  image: "/placeholder.png",
+                  image: "/projects/match.png",
                   link: "https://thematch.brightspotapps.com/",
                 },
                 {
                   title: "Onboarder",
                   description: "Streamlined onboarding solution",
-                  image: "/placeholder.png",
+                  image: "/projects/onboarding.png",
                   link: "https://onboarder-untitled.netlify.app/",
                 },
                 {
                   title: "Influx AI",
                   description: "AI-powered business intelligence platform",
-                  image: "/placeholder.png",
+                  image: "/projects/influx.png",
                   link: "https://app.influxai.io/",
                 },
               ]
