@@ -285,7 +285,7 @@ export default function Home() {
                 {
                   title: "Betacare",
                   description: "Healthcare service platform",
-                  image: "/proje.png",
+                  image: "/projects/betacare.png",
                   link: "https://betacare.ng",
                 },
                 {
