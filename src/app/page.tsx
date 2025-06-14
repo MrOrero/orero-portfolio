@@ -112,10 +112,11 @@ export default function Home() {
             <h1 className="relative text-4xl md:text-6xl font-bold mb-4 text-white">
               I&apos;m Orero{" "}
               <span className="relative">
-                Ozore
-                <span className="absolute z-50   bg-yellow-300 grid content-center py-2 md:py-3 border h-fit px-2.5 md:px-4  text-black top-[-0.5rem] md:top-[-0.75rem]  left-4 md:left-8 rounded-xl ">
+                O
+                <span className="absolute z-50 bg-yellow-300 grid content-center py-2 md:py-3 border h-fit px-2.5 md:px-4 text-black top-[-0.5rem] md:top-[-0.75rem] left-4 md:left-8 rounded-xl">
                   z
                 </span>
+                zore
               </span>{" "}
               <span className="wave">👋</span>
             </h1>
@@ -201,7 +202,7 @@ export default function Home() {
           {/* Projects */}
           <section
             ref={projectRef}
-            className="mt-40 px-4 max-w-7xl mx-auto px-6 text-center"
+            className="mt-40 px-4 max-w-7xl mx-auto  text-center"
           >
             <h2 className="text-3xl md:text-4xl font-semibold mb-2">
               Projects
@@ -354,7 +355,7 @@ export default function Home() {
                     key={idx}
                     className="bg-[#1D1D1D] max-w-[291px] p-6 rounded-3xl text-left"
                   >
-                    <h4 className="text-lg font-semibold mb-5">
+                    <h4 className="text-lg text-white font-semibold mb-5">
                       {project.title}
                     </h4>
                     <div className="w-full relative h-40 bg-gray-700 mb-4 rounded-md overflow-hidden">
@@ -389,7 +390,7 @@ export default function Home() {
 
           {/* Contact */}
           <section ref={contactRef} className="mt-40 text-center px-4">
-            <h2 className="text-3xl md:text-4xl font-semibold  mb-4">
+            <h2 className="text-3xl md:text-4xl text-white font-semibold  mb-4">
               Contact Me
             </h2>
             <p className="text-[#999999] text-lg text-center md:text-xl mb-12">
