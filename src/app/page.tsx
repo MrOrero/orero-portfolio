@@ -204,7 +204,7 @@ export default function Home() {
             ref={projectRef}
             className="mt-40 px-4 max-w-7xl mx-auto  text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-semibold mb-2">
+            <h2 className="text-3xl text-white md:text-4xl font-semibold mb-2">
               Projects
             </h2>
             <p className="text-[#999999] text-lg text-center md:text-xl mb-8">
