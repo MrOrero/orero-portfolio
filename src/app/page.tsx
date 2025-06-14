@@ -113,7 +113,7 @@ export default function Home() {
               I&apos;m Orero{" "}
               <span className="relative">
                 Ozore
-                <span className="absolute z-50   bg-yellow-300 grid content-center py-2 md:py-3 border h-fit px-2.5 md:px-4  text-black -inset-y-2 md:-inset-y-3 left-4 md:left-8 rounded-xl ">
+                <span className="absolute z-50   bg-yellow-300 grid content-center py-2 md:py-3 border h-fit px-2.5 md:px-4  text-black top-[-0.5rem] md:top-[-0.75rem]  left-4 md:left-8 rounded-xl ">
                   z
                 </span>
               </span>{" "}
