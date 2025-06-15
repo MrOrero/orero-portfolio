@@ -96,9 +96,17 @@ body {
   transition: transform 0.2s, background-color 0.2s;
 }
 
+.skill-icon-white{
+   background-color: white;
+}
+
 .skill-icon:hover {
   transform: translateY(-5px);
   background-color: #2a2a2a;
+}
+
+.skill-icon-white:hover {
+  background-color: #f0f0f0;
 }
 
 /* Add a subtle pause indicator when user is scrolling manually */

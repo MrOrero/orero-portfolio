@@ -160,7 +160,7 @@ export default function Home() {
                   abilities who thrives in fast-paced environments. Committed to
                   delivering results that exceed expectations. Strong
                   communicator and team player able to collaborate effectively
-                  across departments.
+                  across departments.
                 </p>
               </div>
             </div>
@@ -177,18 +177,18 @@ export default function Home() {
                   { name: "Angular", logo: "/logos/angular.png" },
                   { name: "React", logo: "/logos/react.png" },
                   { name: "NestJS", logo: "/logos/nest.jpg" },
-                  { name: "Express", logo: "/logos/express.png" },
+                  { name: "Express", logo: "/logos/express.png", imageClass: "bg-white" },
                   { name: "Spring Boot", logo: "/logos/springboot.png" },
-                  { name: "AWS", logo: "/logos/aws.png" },
+                  { name: "AWS", logo: "/logos/aws.png", className: "skill-icon-white" },
                 ].map((skill, index) => (
                   <div key={`${skill.name}-${index}`} className="skill-item">
-                    <div className="skill-icon">
+                    <div className={`skill-icon ${skill.className}`}>
                       <Image
                         src={skill.logo}
                         alt={skill.name}
                         width={50}
                         height={50}
-                        className="object-contain"
+                        className={`object-contain ${skill.imageClass || ""}`}
                       />
                     </div>
                     <p className="mt-2 font-medium text-sm text-white">
@@ -248,40 +248,47 @@ export default function Home() {
                 },
                 {
                   title: "Kachasi",
-                  description: "Modern banking solution by Union Systems",
+                  description: "Trade finance software application built to automate the full lifecycle of international and local trade finance operations",
                   image: "/projects/kachasi.png",
                   link: "https://unionsystems.com/products/kachasi/",
                 },
                 {
                   title: "Arca Money",
-                  description: "Digital financial services platform for agents",
+                  description: "Agency Banking Platform that enables registered agents to process financial transactions for customers, making banking products more accessible.",
                   image: "/projects/arca.png",
                   link: "https://arca.network/agents",
                 },
                 {
                   title: "AV Card",
-                  description: "Digital card and payment solution",
+                  description: "Virtual card platform for online transactions",
                   image: "/projects/avcard.png",
                   link: "https://avcard.io/",
                 },
                 {
                   title: "GiveBack",
                   description:
-                    "Charitable donation and community support platform",
+                    `A social responsibility platform that connect and integrate all social responsibility stakeholders to 
+                    allow transparent opportunity for worldwide sponsors to support local projects. `,
                   image: "/projects/giveback.png",
                   link: "https://givebackng.org/",
                 },
                 {
-                  title: "Knowledge Up",
-                  description: "Educational platform for skill development",
-                  image: "/projects/knowledgeup.png",
-                  link: "https://knowledgeup.netlify.app/",
+                  title: "Contract Collab",
+                  description: "An Inhouse Contract Management Sytem for ABInBev(in use in over 10 countries), It provides all tools needed in the contract lifecyle, from conception to finalizing and signing a contract",
+                  image: "/projects/contract.png",
+                  link: "https://contractscolab.com",
                 },
                 {
-                  title: "MySirigu",
-                  description: "Mobile app for community engagement",
-                  image: "/projects/mysirigu.png",
-                  link: "https://onelink.to/4vpnag",
+                  title: "SpotPay",
+                  description: "Inhouse payment platform for ABInBev, enabling seamless and accurate payments for ABInBev transporters and distributors across Africa.",
+                  image: "/projects/spotpay.png",
+                  link: "https://tpayments.abispotlight.com/",
+                },
+                {
+                  title: "Influx AI",
+                  description: "AI-powered Web3 token security and analytics platform",
+                  image: "/projects/influx.png",
+                  link: "https://app.influxai.io/",
                 },
                 {
                   title: "Betacare",
@@ -302,18 +309,6 @@ export default function Home() {
                   link: "https://betaplay.ng",
                 },
                 {
-                  title: "Contract Collab",
-                  description: "Contract management and collaboration tool",
-                  image: "/projects/contract.png",
-                  link: "https://contractscolab.com",
-                },
-                {
-                  title: "SpotPay",
-                  description: "Payment processing solution",
-                  image: "/projects/spotpay.png",
-                  link: "https://tpayments.abispotlight.com/",
-                },
-                {
                   title: "ESPN Superbowl VIP",
                   description: "Event page for ESPN Superbowl VIP experience",
                   image: "/projects/espn.png",
@@ -321,7 +316,7 @@ export default function Home() {
                 },
                 {
                   title: "THE MATCH: SUPERSTARS",
-                  description: "Platform for sports match events",
+                  description: "Event registration for THE MATCH: SUPERSTARS by Capital One",
                   image: "/projects/match.png",
                   link: "https://thematch.brightspotapps.com/",
                 },
@@ -332,10 +327,16 @@ export default function Home() {
                   link: "https://onboarder-untitled.netlify.app/",
                 },
                 {
-                  title: "Influx AI",
-                  description: "AI-powered business intelligence platform",
-                  image: "/projects/influx.png",
-                  link: "https://app.influxai.io/",
+                  title: "Knowledge Up",
+                  description: "Educational platform for skill development",
+                  image: "/projects/knowledgeup.png",
+                  link: "https://knowledgeup.netlify.app/",
+                },
+                {
+                  title: "MySirigu",
+                  description: "Social networking mobile application for crowdfunding and wishlisting",
+                  image: "/projects/mysirigu.png",
+                  link: "https://onelink.to/4vpnag",
                 },
               ]
                 .filter((project) =>
@@ -349,11 +350,11 @@ export default function Home() {
                         "ESPN Superbowl VIP",
                       ].includes(project.title)
                     : true
-                )
+                )                
                 .map((project, idx) => (
                   <div
                     key={idx}
-                    className="bg-[#1D1D1D] max-w-[291px] p-6 rounded-3xl text-left"
+                    className="bg-[#1D1D1D] max-w-[291px] p-6 rounded-3xl text-left flex flex-col h-full"
                   >
                     <h4 className="text-lg text-white font-semibold mb-5">
                       {project.title}
@@ -372,14 +373,14 @@ export default function Home() {
                         />
                       </a>
                     </div>
-                    <p className="text-[#999999] text-sm">
+                    <p className="text-[#999999] text-sm mb-4 flex-grow">
                       {project.description}
                     </p>
                     <a
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block mt-4 text-cyan-400 text-sm hover:text-white transition-colors duration-200"
+                      className="inline-block text-cyan-400 text-sm hover:text-white transition-colors duration-200 mt-auto"
                     >
                       View Project →
                     </a>
