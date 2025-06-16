@@ -109,17 +109,17 @@ export default function Home() {
             <button className="border-4 mx-auto   border-[#D9ECEC]  w-fit bg-white text-[#006666] text-sm px-4.5  rounded-full mb-6">
               Hey there, nice to meet you
             </button>
-            <h1 className="relative text-4xl md:text-6xl font-bold mb-4 text-white">
+            <div className="relative flex gap-3 m-auto text-4xl md:text-6xl font-bold mb-4 text-white">
               I&apos;m Orero{" "}
-              <span className="relative">
+              <div className="relative">
                 O
-                <span className="absolute z-50 bg-yellow-300 grid content-center py-2 md:py-3 border h-fit px-2.5 md:px-4 text-black top-[-0.5rem] md:top-[-0.75rem] left-4 md:left-8 rounded-xl">
+                <div className="absolute z-50 bg-yellow-300 grid content-center py-2 md:py-3 border h-fit px-2.5 md:px-4 text-black top-[-0.5rem] md:top-[-0.75rem] left-4 md:left-8 rounded-xl">
                   z
-                </span>
+                </div>
                 zore
-              </span>{" "}
+              </div>{" "}
               <span className="wave">👋</span>
-            </h1>
+            </div>
             <h2 className="text-[#999999] tracking-wide text-lg">
               Software engineer
             </h2>
