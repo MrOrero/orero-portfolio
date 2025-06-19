@@ -1,7 +1,6 @@
 "use client";
 
 import TabMenu from "@/components/header";
-import Head from "next/head";
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 
@@ -84,13 +83,8 @@ export default function Home() {
       ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
-
   return (
     <>
-      <Head>
-        <title>Orero Ozore - Portfolio</title>
-        <meta name="description" content="Software Engineer Portfolio" />
-      </Head>
       <main className="relative w-full min-h-screen   bg-black ">
         {/* Gradient overlay */}
         <div className="absolute inset-0 z-0">
@@ -177,8 +171,8 @@ export default function Home() {
                   { name: "Java", logo: "/logos/java.png" },
                   { name: "Angular", logo: "/logos/angular.png" },
                   { name: "React", logo: "/logos/react.png" },
-                  { name: "NestJS", logo: "/logos/nest.jpg" },
-                  { name: "Express", logo: "/logos/express.png", imageClass: "bg-white" },
+                  { name: "NestJS", logo: "/logos/nest.jpg", className: "skill-icon-white" },
+                  { name: "Express", logo: "/logos/express.png", imageClass: "bg-white", className: "skill-icon-white" },
                   { name: "Spring Boot", logo: "/logos/springboot.png" },
                   { name: "AWS", logo: "/logos/aws.png", className: "skill-icon-white" },
                 ].map((skill, index) => (
