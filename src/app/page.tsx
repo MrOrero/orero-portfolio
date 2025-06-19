@@ -332,20 +332,31 @@ export default function Home() {
                   description: "Social networking mobile application for crowdfunding and wishlisting",
                   image: "/projects/mysirigu.png",
                   link: "https://onelink.to/4vpnag",
-                },
-              ]
+                },              ]
                 .filter((project) =>
                   activeTab === "featured"
                     ? [
+                        "ESPN Superbowl VIP",
                         "THE MATCH: SUPERSTARS",
                         "SIMROP",
                         "Influx AI",
-
                         "AV Card",
-                        "ESPN Superbowl VIP",
                       ].includes(project.title)
                     : true
-                )                
+                )
+                .sort((a, b) => {
+                  if (activeTab === "featured") {
+                    const featuredOrder = [
+                      "ESPN Superbowl VIP",
+                      "SIMROP",
+                      "Influx AI",
+                      "AV Card",
+                      "THE MATCH: SUPERSTARS",
+                    ];
+                    return featuredOrder.indexOf(a.title) - featuredOrder.indexOf(b.title);
+                  }
+                  return 0;
+                })                
                 .map((project, idx) => (
                   <div
                     key={idx}
