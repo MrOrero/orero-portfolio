@@ -141,7 +141,7 @@ export default function Home() {
                         Orero Ozore
                       </h3>
                       <p className="text-[#999999] text-sm md:text-base">
-                        Frontend & Backend
+                        Software Engineer
                       </p>
                     </div>
                   </div>
