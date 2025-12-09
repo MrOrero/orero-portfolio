@@ -147,15 +147,7 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-white mt-10 text-left text-sm leading-relaxed">
-                  Senior Software Engineer with experience across multiple
-                  industries including Web3, AI, Fintech, Telecommunication, and
-                  Manufacturing industries. Skilled in leading cross-functional
-                  teams to deliver high-quality software solutions. A highly
-                  motivated self-starter with excellent problem-solving
-                  abilities who thrives in fast-paced environments. Committed to
-                  delivering results that exceed expectations. Strong
-                  communicator and team player able to collaborate effectively
-                  across departments.
+                  Senior Software Engineer and Co-founder at yadsale, former Engineering Lead at NXT. Proven track record building and scaling products across fintech, manufacturing, logistics, AI, and other industries. Delivered critical infrastructure for MTN and Glo's SIM registration systems, developed ABInBev's payments and management platform deployed across 10+ African countries, and built software for global brands including ESPN, Nickelodeon, and Capital One. Portfolio includes 16+ live products in production.
                 </p>
               </div>
             </div>
@@ -209,22 +201,20 @@ export default function Home() {
             <div className="flex justify-center tracking-wide text-sm md:text-base font-medium gap-3 mb-12">
               <button
                 onClick={() => setActiveTab("featured")}
-                className={`px-4 py-2 rounded-full transition-colors duration-200 ${
-                  activeTab === "featured"
+                className={`px-4 py-2 rounded-full transition-colors duration-200 ${activeTab === "featured"
                     ? "bg-[#006666] text-white"
                     : "bg-[#1D1D1D] text-[#737373] hover:text-cyan-400"
-                }`}
+                  }`}
               >
                 Featured projects
               </button>
 
               <button
                 onClick={() => setActiveTab("all")}
-                className={`px-4 py-2 rounded-full transition-colors duration-200 ${
-                  activeTab === "all"
+                className={`px-4 py-2 rounded-full transition-colors duration-200 ${activeTab === "all"
                     ? "bg-[#006666] text-white"
                     : "bg-[#1D1D1D] text-[#737373] hover:text-cyan-400"
-                }`}
+                  }`}
               >
                 All projects
               </button>
@@ -234,6 +224,13 @@ export default function Home() {
             {/* Projects Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 content-center w-fit mx-auto">
               {[
+                {
+                  title: "Yadsale",
+                  description:
+                    "Buy and Sell just like your local market, but safer",
+                  image: "/projects/yadsale.png",
+                  link: "https://www.yadsale.com",
+                },
                 {
                   title: "SIMROP",
                   description:
@@ -332,23 +329,23 @@ export default function Home() {
                   description: "Social networking mobile application for crowdfunding and wishlisting",
                   image: "/projects/mysirigu.png",
                   link: "https://onelink.to/4vpnag",
-                },              ]
+                },]
                 .filter((project) =>
                   activeTab === "featured"
                     ? [
-                        "ESPN Superbowl VIP",
-                        "THE MATCH: SUPERSTARS",
-                        "SIMROP",
-                        "Influx AI",
-                        "AV Card",
-                      ].includes(project.title)
+                      "ESPN Superbowl VIP",
+                      "THE MATCH: SUPERSTARS",
+                      "Yadsale",
+                      "Influx AI",
+                      "AV Card",
+                    ].includes(project.title)
                     : true
                 )
                 .sort((a, b) => {
                   if (activeTab === "featured") {
                     const featuredOrder = [
+                      "Yadsale",
                       "ESPN Superbowl VIP",
-                      "SIMROP",
                       "Influx AI",
                       "AV Card",
                       "THE MATCH: SUPERSTARS",
@@ -356,7 +353,7 @@ export default function Home() {
                     return featuredOrder.indexOf(a.title) - featuredOrder.indexOf(b.title);
                   }
                   return 0;
-                })                
+                })
                 .map((project, idx) => (
                   <div
                     key={idx}
