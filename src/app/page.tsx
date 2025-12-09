@@ -147,7 +147,7 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-white mt-10 text-left text-sm leading-relaxed">
-                  Senior Software Engineer and Co-founder at yadsale, former Engineering Lead at NXT. Proven track record building and scaling products across fintech, manufacturing, logistics, AI, and other industries. Delivered critical infrastructure for MTN and Glo's SIM registration systems, developed ABInBev's payments and management platform deployed across 10+ African countries, and built software for global brands including ESPN, Nickelodeon, and Capital One. Portfolio includes 16+ live products in production.
+                  Senior Software Engineer and Co-founder at yadsale, former Engineering Lead at NXT. Proven track record building and scaling products across fintech, manufacturing, logistics, AI, and other industries. Delivered critical infrastructure for MTN and Glo&apos;s SIM registration systems, developed ABInBev&apos;s payments and management platform deployed across 10+ African countries, and built software for global brands including ESPN, Nickelodeon, and Capital One. Portfolio includes 16+ live products in production.
                 </p>
               </div>
             </div>
