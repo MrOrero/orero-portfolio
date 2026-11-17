@@ -31,8 +31,8 @@ const cabinet = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Orero Ozore - Portfolio",
-  description: "Senior Software Engineer with experience across multiple industries including Web3, AI, Fintech, Telecommunication, and Manufacturing industries.",
+  title: "Orero Ozore | Portfolio",
+  description: "Senior Software Engineer building full stack products in TypeScript, Node.js, React and Next.js across fintech, healthtech, AI and Web3.",
   icons: {
     icon: '/favicon.svg',
     shortcut: '/favicon.svg',

@@ -116,7 +116,7 @@ export default function Home() {
             </div>
 
             <h2 className="text-[#999999] tracking-wide text-lg">
-              Software engineer
+              Senior Software Engineer
             </h2>
 
             {/* About Card */}
@@ -141,13 +141,13 @@ export default function Home() {
                         Orero Ozore
                       </h3>
                       <p className="text-[#999999] text-sm md:text-base">
-                        Software Engineer
+                        Senior Software Engineer
                       </p>
                     </div>
                   </div>
                 </div>
                 <p className="text-white mt-10 text-left text-sm leading-relaxed">
-                  Senior Software Engineer and Co-founder at yadsale, former Engineering Lead at NXT. Proven track record building and scaling products across fintech, manufacturing, logistics, AI, and other industries. Delivered critical infrastructure for MTN and Glo&apos;s SIM registration systems, developed ABInBev&apos;s payments and management platform deployed across 10+ African countries, and built software for global brands including ESPN, Nickelodeon, and Capital One. Portfolio includes 16+ live products in production.
+                  I&apos;m a senior software engineer and co-founder of Yadsale. I build products end to end in TypeScript, Node.js, React and Next.js, with Java and Spring Boot when the work calls for it. I&apos;ve shipped software across fintech, healthtech, AI, Web3, telecom and manufacturing: AB InBev&apos;s contract management and payment platforms used across Africa, event platforms for ESPN, Capital One and Nickelodeon, telehealth at NXT, where I was Engineering Lead, and the overdraft product at Moniepoint, which has lent over $7 million to more than 10,000 businesses.
                 </p>
               </div>
             </div>
@@ -232,9 +232,23 @@ export default function Home() {
                   link: "https://www.yadsale.com",
                 },
                 {
+                  title: "Moniepoint",
+                  description:
+                    "Business banking and loans; I worked on the overdraft product (over $7 million lent to 10,000+ businesses) and the Angular to React rebuild of the business banking app",
+                  image: "/projects/moniepoint.png",
+                  link: "https://moniepoint.com",
+                },
+                {
+                  title: "Frontier Dental",
+                  description:
+                    "E-commerce platform for a leading Canadian dental supplier, serving dental practices across Canada and the US",
+                  image: "/projects/frontierdental.png",
+                  link: "https://www.frontierdental.com/us/en/home",
+                },
+                {
                   title: "SIMROP",
                   description:
-                    "SIM Registration and Operations Portal for MTN Nigeria",
+                    "SIM registration and operations portal used by MTN and Glo in Nigeria",
                   image: "/projects/simrop.png",
                   link: "https://sraa.mtnnigeria.net/simrop/",
                 },
@@ -266,13 +280,13 @@ export default function Home() {
                 },
                 {
                   title: "Contract Collab",
-                  description: "An Inhouse Contract Management Sytem for ABInBev(in use in over 10 countries), It provides all tools needed in the contract lifecyle, from conception to finalizing and signing a contract",
+                  description: "In-house contract management system for AB InBev, used in 10 African countries. It covers the full contract lifecycle, from drafting to signing, and replaced an expensive third party tool.",
                   image: "/projects/contract.png",
                   link: "https://contractscolab.com",
                 },
                 {
                   title: "SpotPay",
-                  description: "Inhouse payment platform for ABInBev, enabling seamless and accurate payments for ABInBev transporters and distributors across Africa.",
+                  description: "In-house payment platform that lets AB InBev pay its transporters and distributors across Africa accurately.",
                   image: "/projects/spotpay.png",
                   link: "https://tpayments.abispotlight.com/",
                 },
@@ -284,7 +298,7 @@ export default function Home() {
                 },
                 {
                   title: "Betacare",
-                  description: "Healthcare service platform",
+                  description: "Telehealth platform with video and audio consultations; reached over $40,000 in monthly subscription value",
                   image: "/projects/betacare.png",
                   link: "https://betacare.ng",
                 },
@@ -302,13 +316,13 @@ export default function Home() {
                 },
                 {
                   title: "ESPN Superbowl VIP",
-                  description: "Event page for ESPN Superbowl VIP experience",
+                  description: "ESPN's Super Bowl LIX VIP experience, where invited guests register, book accommodation and plan travel",
                   image: "/projects/espn.png",
                   link: "https://espnvip.brightspotapps.com/",
                 },
                 {
                   title: "THE MATCH: SUPERSTARS",
-                  description: "Event registration for THE MATCH: SUPERSTARS by Capital One",
+                  description: "Event registration, accommodation and travel planning for Capital One's The Match: Superstars",
                   image: "/projects/match.png",
                   link: "https://thematch.brightspotapps.com/",
                 },
@@ -333,11 +347,12 @@ export default function Home() {
                 .filter((project) =>
                   activeTab === "featured"
                     ? [
+                      "Yadsale",
+                      "Moniepoint",
+                      "Frontier Dental",
                       "ESPN Superbowl VIP",
                       "THE MATCH: SUPERSTARS",
-                      "Yadsale",
                       "Influx AI",
-                      "AV Card",
                     ].includes(project.title)
                     : true
                 )
@@ -345,10 +360,11 @@ export default function Home() {
                   if (activeTab === "featured") {
                     const featuredOrder = [
                       "Yadsale",
+                      "Moniepoint",
+                      "Frontier Dental",
                       "ESPN Superbowl VIP",
-                      "Influx AI",
-                      "AV Card",
                       "THE MATCH: SUPERSTARS",
+                      "Influx AI",
                     ];
                     return featuredOrder.indexOf(a.title) - featuredOrder.indexOf(b.title);
                   }
@@ -427,7 +443,7 @@ export default function Home() {
         </div>
       </main>
       <footer className="text-[#999999] bg-[#141A1A] text-center text-sm py-8 border-t border-[#F0F0F080]">
-        © 2025 Orero Ozore. Copyright.
+        © {new Date().getFullYear()} Orero Ozore.
       </footer>
     </>
   );
