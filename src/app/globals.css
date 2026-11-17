@@ -1,29 +1,46 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  margin: 0;
+  background: #0a0a0a;
+}
+
+/* The original site, kept at /current for comparison. */
+.legacy {
+  background: #000;
+  color: #ededed;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Version switcher: shared across every direction. Neutral on purpose. */
+.vswitch {
+  position: fixed;
+  z-index: 1000;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 999px;
+  background: #111;
+  border: 1px solid #333;
+  font: 500 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  box-shadow: 0 6px 24px rgb(0 0 0 / 0.25);
+}
+.vswitch a {
+  color: #bbb;
+  text-decoration: none;
+  padding: 7px 10px;
+  border-radius: 999px;
+}
+.vswitch a:hover { color: #fff; }
+.vswitch a[aria-current="page"] { background: #f2f2f2; color: #111; }
+.vswitch a:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 
 /* Skill scrolling styles */
 .skills-scroll-container {
