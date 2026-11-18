@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 
 /** One easing curve and a small set of durations, so motion reads as one system. */
 export const EASE = [0.22, 1, 0.36, 1] as const;
@@ -46,4 +46,20 @@ export function easeOut(x: number) {
     else hi = mid;
   }
   return by((lo + hi) / 2);
+}
+
+const RM = "(prefers-reduced-motion: reduce)";
+const subscribeRM = (cb: () => void) => {
+  const mq = window.matchMedia(RM);
+  mq.addEventListener("change", cb);
+  return () => mq.removeEventListener("change", cb);
+};
+/**
+ * Reduced-motion preference that is safe to render with: the server and the
+ * hydration pass both read false, then the real value arrives in a re-render.
+ * (motion's useReducedMotion reads the media query during hydration, which
+ * makes server and client markup disagree for people who ask for less motion.)
+ */
+export function useReduced() {
+  return useSyncExternalStore(subscribeRM, () => window.matchMedia(RM).matches, () => false);
 }

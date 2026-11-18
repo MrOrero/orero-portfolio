@@ -1,41 +1,45 @@
-import { person, projectsByDate } from "@/content";
-import Arrivals from "./_components/Arrivals";
-import Board from "./_components/Board";
-import Clock from "./_components/Clock";
-import Hero from "./_components/Hero";
+import { person, projectsByDate, sectorById, years } from "@/content";
+import { opt } from "@/lib/intro-key";
+import { About } from "./_components/About";
+import type { DeckItem } from "./_components/Card";
+import { Contact } from "./_components/Contact";
+import { Deal } from "./_components/Deal";
+import { Deck } from "./_components/Deck";
+import { Hero } from "./_components/Hero";
+import { Shell } from "./_components/Shell";
+import { StatFlip } from "./_components/StatFlip";
+
+const PORTRAIT = "/profile-picture.jpg";
+// Years are approximate (see content/projects.ts, TODO confirm with Orero).
+const span = (s: number, e: number) => (s === e ? String(s) : `${s}–${String(e).slice(2)}`);
 
 export default function Page() {
+  const items: DeckItem[] = projectsByDate.map((p, i) => ({
+    ...p,
+    n: String(i + 1).padStart(4, "0"),
+    sectorLabel: sectorById[p.sector].label,
+    years: span(p.start, p.end),
+  }));
+  // Every card face uses the 384 and 640 renditions; the portrait shows at 828.
+  const urls = [...items.flatMap((p) => [opt(p.image, 640), opt(p.image, 384)]), opt(PORTRAIT, 828)];
+
   return (
-    <>
-      <header className="d-head" data-tone="board">
-        <div className="d-bar">
-          <span className="d-title">
-            Departures <span lang="fr">Départs</span>
-          </span>
-          <Clock />
-        </div>
-        <Hero />
-        <p className="d-role">
-          {person.role} <span aria-hidden="true">·</span> carrying products from first commit to production since 2020
-        </p>
-      </header>
-      <main id="main" data-tone="board" className="d-main">
-        <h2 className="sr-only">Projects</h2>
-        <Board projects={projectsByDate} />
-        <p className="d-legend">
-          Point at a flight to read its remarks. Select one to get a boarding pass.
-        </p>
+    <Shell urls={urls} titles={items.map((p) => p.title)} name={person.name}>
+      <Hero
+        first={person.first}
+        last={person.last}
+        role={person.role}
+        line={person.short}
+        span={`${years.from}–${String(years.to).slice(2)}`}
+        count={items.length}
+      />
+      <main id="main">
+        <Deal items={items} />
+        <Deck items={items} />
+        <StatFlip stats={person.stats} />
+        <About name={person.name} role={person.role} bio={person.bio} portrait={PORTRAIT} stack={person.stack} sectors={person.sectors} />
+        <Contact name={person.name} role={person.role} email={person.email} links={person.links} />
       </main>
-      <section className="d-info" data-tone="gate" aria-labelledby="info-h">
-        <h2 id="info-h">Passenger information</h2>
-        <p>{person.bio}</p>
-        <p className="d-stack">{person.stack.join("  /  ")}</p>
-      </section>
-      <footer className="d-foot" data-tone="board">
-        <h2 className="d-foot-h">Arrivals</h2>
-        <p className="d-foot-sub">Inbound messages are welcome on every channel.</p>
-        <Arrivals />
-      </footer>
-    </>
+    </Shell>
   );
 }
