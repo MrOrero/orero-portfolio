@@ -36,7 +36,6 @@ export function Box({ c, w = 384, placard = true }: { c: Cargo; w?: 384 | 640; p
         <span className="s-box-title">{c.title}</span>
         <span className="s-box-meta">
           {c.sectorLabel}
-          <span className="s-box-yr"> · {c.years}</span>
         </span>
       </span>
     </div>

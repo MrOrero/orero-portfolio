@@ -269,7 +269,6 @@ html[data-home-seen] .s-intro { display: none; }
  * Voyage containers are screen-first: the screenshot takes most of the side, the serial
  * is dropped, and the title shrinks only as far as its longest word needs (--fit, set by Box).
  */
-.s-box-yr { display: none; }
 .s-voyage .s-box { --t-w: 27cqw; }
 .s-voyage .s-box-doors { width: 11cqw; }
 .s-voyage .s-box-placard { left: 3.4cqw; top: 4cqw; height: 34.5cqw; box-shadow: 0 0 0 0.5cqw rgb(255 255 255 / 0.9); }
@@ -277,7 +276,6 @@ html[data-home-seen] .s-intro { display: none; }
 .s-voyage .s-box-code { display: none; }
 .s-voyage .s-box-title { overflow-wrap: normal; text-wrap: balance; font-size: min(9cqw, calc(var(--t-w) / var(--fit) / 0.56)); }
 .s-voyage .s-box-meta { font-size: 2.8cqw; white-space: normal; line-height: 1.3; }
-.s-voyage .s-box-yr { display: inline; }
 
 /*
  * Phones: one tier, and each container turns to show a taller face, so the screenshot
