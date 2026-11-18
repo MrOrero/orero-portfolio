@@ -16,8 +16,10 @@ export const boxCode = (end: number, n: number) => `SUPER SHIPPER ${String(end).
  * units, so one design serves the intro, the voyage and the yard.
  */
 export function Box({ c, w = 384, placard = true }: { c: Cargo; w?: 384 | 640; placard?: boolean }) {
+  // Longest word in the title, so a look can size the stencil to fit without splitting words.
+  const fit = Math.max(...c.title.split(/\s+/).map((t) => t.length));
   return (
-    <div className="s-box" data-sector={c.sector}>
+    <div className="s-box" data-sector={c.sector} style={{ "--fit": fit } as React.CSSProperties}>
       <span className="s-box-doors" aria-hidden="true" />
       {placard && (
         <span className="s-box-placard">
@@ -34,6 +36,7 @@ export function Box({ c, w = 384, placard = true }: { c: Cargo; w?: 384 | 640; p
         <span className="s-box-title">{c.title}</span>
         <span className="s-box-meta">
           {c.sectorLabel}
+          <span className="s-box-yr"> · {c.years}</span>
         </span>
       </span>
     </div>
