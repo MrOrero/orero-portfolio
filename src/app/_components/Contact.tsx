@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { useReduced } from "@/lib/motion";
 import { EASE_S } from "./ease";
 import { Magnetic } from "./Magnetic";
+import { Arrow } from "./Arrow";
 
 const LINES = ["Let's ship", "the next one."];
 
@@ -62,7 +63,7 @@ export function Contact({ name, email, links, span }: { name: string; email: str
               {social.map((l) => (
                 <li key={l.href}>
                   <a href={l.href} target="_blank" rel="noreferrer" data-cursor="Open">
-                    {l.label} ↗<span className="sr-only"> (opens in a new tab)</span>
+                    {l.label}<Arrow /><span className="sr-only"> (opens in a new tab)</span>
                   </a>
                 </li>
               ))}

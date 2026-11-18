@@ -6,6 +6,7 @@ import { opt } from "@/lib/intro-key";
 import type { Cargo } from "./Box";
 import { EASE_S } from "./ease";
 import { Words } from "./Words";
+import { Arrow } from "./Arrow";
 
 /**
  * The manifest: every container on one sheet, with its live link. Plain rows,
@@ -46,7 +47,7 @@ export function Manifest({ cargo }: { cargo: Cargo[] }) {
                 <a href={c.link} target="_blank" rel="noreferrer" data-cursor="Visit">
                   <RowCells c={c} />
                   <span className="s-row-go" aria-hidden="true">
-                    ↗
+                    <Arrow />
                   </span>
                   <span className="sr-only">(opens in a new tab)</span>
                 </a>

@@ -8,6 +8,7 @@ import type { Cargo } from "./Box";
 import { EASE_S } from "./ease";
 import { Magnetic } from "./Magnetic";
 import { lockScroll, unlockScroll } from "./scroll";
+import { Arrow } from "./Arrow";
 
 /**
  * A container brought to the front of the quay. It flies in from wherever it
@@ -102,7 +103,7 @@ export function BoxView({ c, layoutId, onClose }: { c: Cargo; layoutId?: string;
           <motion.div className="s-view-actions" {...rise(0.62)}>
             {c.link && (
               <Magnetic href={c.link} external className="s-btn s-btn-orange" cursor="Visit">
-                Visit live site ↗
+                Visit live site<Arrow />
               </Magnetic>
             )}
             <button ref={close} type="button" className="s-btn" onClick={onClose} data-cursor="Close">
