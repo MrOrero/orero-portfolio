@@ -3,10 +3,10 @@
 import { usePathname } from "next/navigation";
 
 const versions = [
-  { href: "/", label: "1", name: "Ledger" },
-  { href: "/v2", label: "2", name: "Departures" },
-  { href: "/v3", label: "3", name: "Trace" },
-  { href: "/v4", label: "4", name: "Contract" },
+  { href: "/", label: "1", name: "Receipt" },
+  { href: "/v2", label: "2", name: "Foil" },
+  { href: "/v3", label: "3", name: "Shipped" },
+  { href: "/v4", label: "4", name: "Load" },
   { href: "/v5", label: "5", name: "Switchboard" },
   { href: "/current", label: "0", name: "Current site" },
 ];

@@ -24,7 +24,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    // Each version's inline script may mark <html> (intro already seen) before React hydrates.
+    <html lang="en" suppressHydrationWarning>
       <body className={`${cabinet.variable} antialiased`}>
         {children}
         <VersionSwitcher />
