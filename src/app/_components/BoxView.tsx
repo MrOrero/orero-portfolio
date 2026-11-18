@@ -79,7 +79,7 @@ export function BoxView({ c, layoutId, onClose }: { c: Cargo; layoutId?: string;
         </motion.div>
         <div className="s-view-body">
           <motion.p className="s-kicker" {...rise(0.3)}>
-            {c.code} · {c.sectorLabel} · {c.years}
+            {c.code} · {c.sectorLabel}
           </motion.p>
           <motion.h2 id="s-view-title" className="s-view-title" {...rise(0.38)}>
             {c.title}

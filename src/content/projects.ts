@@ -33,7 +33,7 @@ export const projects: Project[] = [
     slug: "moniepoint",
     title: "Moniepoint",
     description:
-      "Business banking and loans; I worked on the overdraft product (over $7 million lent to 10,000+ businesses) and the Angular to React rebuild of the business banking app",
+      "Business banking and loans; I worked on the overdraft product (over $7 million lent to 10,000+ businesses)",
     image: "/projects/moniepoint.png",
     size: [1458, 960],
     link: "https://moniepoint.com",
