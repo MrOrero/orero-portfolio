@@ -20,14 +20,16 @@ export type Project = {
   title: string;
   description: string;
   image: string;
-  link: string;
+  /** Pixel size of the image file; large views never show it wider than this. */
+  size: [number, number];
+  /** Live URL. Leave out when the site no longer opens, and the views hide the button. */
+  link?: string;
   sector: SectorId;
   /** Who the work was for. */
   client: string;
   /** Approximate years. TODO confirm with Orero. */
   start: number;
   end: number;
-  featured: boolean;
   /** A short, factual impact line, only where the source content states one. */
   impact?: string;
 };
@@ -44,5 +46,4 @@ export type Person = {
   stack: string[];
   sectors: string[];
   /** Figures stated in the bio; nothing invented. */
-  stats: { id: string; label: string; value: number; prefix?: string; suffix?: string }[];
 };

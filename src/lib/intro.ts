@@ -3,9 +3,8 @@
 import { createContext, useContext, useEffect, useRef, useSyncExternalStore } from "react";
 
 /**
- * Plumbing shared by every version's intro. Each version still draws its own
- * loader; this only covers the parts that must behave the same everywhere:
- * the once-per-tab gate, image preloading and the "site ready" signal.
+ * Intro plumbing: the once-per-tab gate, image preloading and the "site ready"
+ * signal. The loader itself is drawn by _components/Intro.
  */
 
 import { introAttr, introKey } from "./intro-key";
@@ -33,7 +32,6 @@ export const ReadyProvider = Ready.Provider;
 /** False while a loader covers the page, so entrances can wait for the curtain. */
 export const useSiteReady = () => useContext(Ready);
 
-export { opt } from "./intro-key";
 
 /** Fetches and decodes each URL; calls back in completion order with the index. */
 export function preload(urls: string[], onDone: (i: number, ok: boolean) => void) {
