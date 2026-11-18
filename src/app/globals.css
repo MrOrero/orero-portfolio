@@ -232,7 +232,7 @@ html[data-home-seen] .s-intro { display: none; }
 .s-voyage-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; position: relative; z-index: 2; }
 .s-voyage-now { font: 800 15px/1 var(--label); text-transform: uppercase; letter-spacing: 0.14em; color: var(--cream-2); }
 .s-voyage-now .s-roll { color: var(--cream); font: 900 32px/1 var(--stencil); vertical-align: -4px; }
-.s-track { --bw: clamp(140px, 13.5vw, 230px); display: flex; align-items: end; width: max-content; padding-inline: var(--gutter) 8vw; gap: 6vw; align-self: stretch; padding-bottom: 6svh; }
+.s-track { --bw: clamp(240px, min(34vw, 56svh), 560px); display: flex; align-items: end; width: max-content; padding-inline: var(--gutter) 8vw; gap: 6vw; align-self: stretch; padding-bottom: 6svh; }
 .s-bow { width: min(600px, 84vw); align-self: center; padding-bottom: 10svh; }
 .s-bow .s-h2 { font-size: clamp(42px, 5.4vw, 92px); }
 .s-ship { display: flex; align-items: end; position: relative; }
@@ -242,7 +242,7 @@ html[data-home-seen] .s-intro { display: none; }
   content: ""; position: absolute; right: 100%; bottom: 0; width: 18vw; height: var(--hull);
   background: linear-gradient(180deg, #161616 0 62%, #a3261c 62%); clip-path: polygon(100% 0, 0 0, 70% 100%, 100% 100%);
 }
-.s-ship { --hull: clamp(150px, 26svh, 250px); }
+.s-ship { --hull: clamp(120px, 19svh, 200px); }
 .s-bay { display: flex; flex-direction: column; }
 .s-bay-stack { display: flex; align-items: end; gap: 3px; padding-inline: 18px; }
 .s-bay-col ul { display: flex; flex-direction: column-reverse; gap: 3px; }
@@ -265,10 +265,60 @@ html[data-home-seen] .s-intro { display: none; }
 .s-voyage-foot { position: relative; z-index: 2; display: flex; align-items: center; gap: 14px; font: 800 13px/1 var(--label); letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-2); }
 .s-log { flex: 1; height: 2px; background: var(--line); position: relative; overflow: hidden; }
 .s-log span { position: absolute; inset: 0; background: var(--orange); transform-origin: 0 50%; }
+/*
+ * Voyage containers are screen-first: the screenshot takes most of the side, the serial
+ * is dropped, and the title shrinks only as far as its longest word needs (--fit, set by Box).
+ */
+.s-box-yr { display: none; }
+.s-voyage .s-box { --t-w: 27cqw; }
+.s-voyage .s-box-doors { width: 11cqw; }
+.s-voyage .s-box-placard { left: 3.4cqw; top: 4cqw; height: 34.5cqw; box-shadow: 0 0 0 0.5cqw rgb(255 255 255 / 0.9); }
+.s-voyage .s-box-text { left: 60cqw; right: 13cqw; top: 5cqw; bottom: 5cqw; justify-content: center; gap: 3cqw; }
+.s-voyage .s-box-code { display: none; }
+.s-voyage .s-box-title { overflow-wrap: normal; text-wrap: balance; font-size: min(9cqw, calc(var(--t-w) / var(--fit) / 0.56)); }
+.s-voyage .s-box-meta { font-size: 2.8cqw; white-space: normal; line-height: 1.3; }
+.s-voyage .s-box-yr { display: inline; }
+
+/*
+ * Phones: one tier, and each container turns to show a taller face, so the screenshot
+ * runs the full width with the title underneath instead of squeezed beside it.
+ */
 @media (max-width: 700px) {
-  .s-track { --bw: 150px; gap: 14vw; }
-  .s-ship { --hull: 168px; }
+  .s-track { --bw: min(78vw, 340px); gap: 14vw; }
+  .s-bay-col, .s-bay-col ul { display: contents; }
+  .s-bay-stack { gap: 8px; }
+  .s-voyage .s-box { aspect-ratio: auto; height: calc(var(--bw) * 0.84); --t-w: 80cqw; }
+  .s-voyage .s-box-doors { width: 10cqw; }
+  .s-voyage .s-box-placard { left: 4cqw; right: 14cqw; top: 4cqw; height: auto; aspect-ratio: 1.52; }
+  .s-voyage .s-box-text { left: 4cqw; right: 14cqw; top: auto; bottom: 4cqw; justify-content: end; gap: 1.5cqw; }
+  .s-voyage .s-box-title { font-size: min(9cqw, calc(var(--t-w) / var(--fit) / 0.56)); text-wrap: nowrap; }
+  .s-voyage .s-box-meta { font-size: 3.4cqw; }
 }
+
+/*
+ * Where the browser has scroll-driven animations, the ship sails on the compositor in
+ * step with the finger, instead of being moved from JavaScript a frame behind the scroll
+ * (which judders on phones). Voyage.tsx keeps the JS ride as the fallback.
+ */
+.s-track { will-change: transform; }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .s-voyage { view-timeline: --voyage block; }
+    .s-track, .s-log span {
+      animation-duration: 1ms; /* "auto" where understood, else a token duration */
+      animation-duration: auto;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: --voyage;
+      /* Top of the section at the top of the screen to its bottom at the bottom: ["start start", "end end"]. */
+      animation-range: contain 0% contain 100%;
+    }
+    .s-track { animation-name: s-sail; }
+    .s-log span { animation-name: s-log; }
+  }
+}
+@keyframes s-sail { from { transform: translateX(0); } to { transform: translateX(calc(100vw - 100%)); } }
+@keyframes s-log { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @media (prefers-reduced-motion: reduce) {
   .s-voyage-pin { position: relative; height: auto; overflow-x: auto; }
   .s-voyage-pin::after { display: none; }

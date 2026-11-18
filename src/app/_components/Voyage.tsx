@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, useTransform } from "motion/react";
 import { useReduced } from "@/lib/motion";
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from "react";
 import { sectors } from "@/content";
 import { useOnScreen } from "@/lib/intro";
 import { Box, type Cargo } from "./Box";
@@ -14,11 +14,16 @@ type Mode = "year" | "sector";
 /** One bay of the ship: `name` is stencilled on its hull and shown in the head. */
 type Bay = { key: string; name: string; cols: Cargo[][] };
 
-const HIGH = 3;
+const noSubscribe = () => () => {};
+/** Browsers that sail the ship as a CSS scroll-driven animation (see globals.css). */
+const useNativeSail = () => useSyncExternalStore(noSubscribe, () => CSS.supports("animation-timeline: view()"), () => false);
 
-const stack = (items: Cargo[]) => {
+/** Containers per stack on wider screens; phones lay every column out in one tier (see globals.css). */
+const HIGH = 2;
+
+const stack = (items: Cargo[], high = HIGH) => {
   const cols: Cargo[][] = [];
-  for (let i = 0; i < items.length; i += HIGH) cols.push(items.slice(i, i + HIGH));
+  for (let i = 0; i < items.length; i += high) cols.push(items.slice(i, i + high));
   return cols;
 };
 
@@ -63,12 +68,12 @@ export function Voyage({ cargo }: { cargo: Cargo[] }) {
   const ship = useRef<HTMLDivElement>(null);
   const keep = useRef<number | null>(null);
   const reduce = useReduced();
+  const native = useNativeSail();
   const [mode, setMode] = useState<Mode>("sector");
   const [travel, setTravel] = useState(0);
   const [bay, setBay] = useState(0);
   const [open, setOpen] = useState<Cargo | null>(null);
   const close = useCallback(() => setOpen(null), []);
-
   const bays = load(mode, cargo);
   const now = bays[Math.min(bay, bays.length - 1)];
 
@@ -79,14 +84,22 @@ export function Voyage({ cargo }: { cargo: Cargo[] }) {
       if (!t) return;
       setTravel(Math.max(0, t.scrollWidth - window.innerWidth));
     };
+    // Phones fire resize as the address bar slides away mid-scroll; only a new width
+    // can change the voyage, so skip the forced layout read otherwise.
+    let width = window.innerWidth;
+    const onResize = () => {
+      if (window.innerWidth === width) return;
+      width = window.innerWidth;
+      measure();
+    };
     const id = requestAnimationFrame(measure);
     const ro = new ResizeObserver(measure);
     if (track.current) ro.observe(track.current);
-    window.addEventListener("resize", measure);
+    window.addEventListener("resize", onResize);
     return () => {
       cancelAnimationFrame(id);
       ro.disconnect();
-      window.removeEventListener("resize", measure);
+      window.removeEventListener("resize", onResize);
     };
   }, []);
 
@@ -151,7 +164,7 @@ export function Voyage({ cargo }: { cargo: Cargo[] }) {
           </p>
         </div>
 
-        <motion.div ref={track} className="s-track" style={{ x: reduce ? 0 : x }}>
+        <motion.div ref={track} className="s-track" style={reduce ? { x: 0 } : native ? undefined : { x }}>
           <div className="s-bow">
             <Words key={mode} id="s-voyage-title" className="s-h2" text={copy.title} />
             <p className="s-lede" aria-live="polite">
@@ -196,7 +209,7 @@ export function Voyage({ cargo }: { cargo: Cargo[] }) {
                                   onClick={() => setOpen(c)}
                                 >
                                   <motion.div layoutId={`voy-${c.slug}`} transition={{ duration: 0.8, ease: EASE_S }}>
-                                    <Box c={c} />
+                                    <Box c={c} w={640} />
                                   </motion.div>
                                 </button>
                               </motion.li>
@@ -224,7 +237,7 @@ export function Voyage({ cargo }: { cargo: Cargo[] }) {
         <div className="s-wrap s-voyage-foot" aria-hidden="true">
           <span>Bow</span>
           <span className="s-log">
-            <motion.span style={{ scaleX: scrollYProgress }} />
+            <motion.span style={native ? undefined : { scaleX: scrollYProgress }} />
           </span>
           <span>Stern</span>
         </div>
