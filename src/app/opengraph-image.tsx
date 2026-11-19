@@ -32,13 +32,13 @@ async function font(family: string, weight: number, text: string) {
 export default async function OpengraphImage() {
   const kicker = `Super Shipper · ${careerSpan}`.toUpperCase();
   const role = person.role;
-  const [stencil, label, body] = await Promise.all([
-    font("Big Shoulders Stencil", 900, `${person.first}${person.last}`.toUpperCase()),
+  const [display, label, body] = await Promise.all([
+    font("Big Shoulders", 900, `${person.first}${person.last}`.toUpperCase()),
     font("Big Shoulders", 800, kicker),
     font("Archivo", 500, role),
   ]);
   const fonts = [
-    stencil && { name: "Stencil", data: stencil, weight: 900 as const },
+    display && { name: "Display", data: display, weight: 900 as const },
     label && { name: "Label", data: label, weight: 800 as const },
     body && { name: "Body", data: body, weight: 500 as const },
   ].filter((f): f is { name: string; data: ArrayBuffer; weight: 900 | 800 | 500 } => Boolean(f));
@@ -47,7 +47,7 @@ export default async function OpengraphImage() {
     (
       <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", background: NAVY, color: CREAM }}>
         <div style={{ display: "flex", marginTop: 54, fontFamily: "Label", fontSize: 30, letterSpacing: 6, color: ORANGE }}>{kicker}</div>
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: 18, fontFamily: "Stencil", fontSize: 168, lineHeight: 0.86 }}>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: 18, fontFamily: "Display", fontSize: 168, lineHeight: 0.86 }}>
           <span>{person.first.toUpperCase()}</span>
           <span>{person.last.toUpperCase()}</span>
         </div>

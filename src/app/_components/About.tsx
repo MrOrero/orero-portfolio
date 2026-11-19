@@ -47,10 +47,12 @@ export function About({ name, role, bio, portrait, stack, sectors }: { name: str
         </div>
         <figure className="s-about-fig">
           <div className="s-about-frame">
-            <motion.div className="s-about-img" style={{ y: lift }}>
-              {/* eslint-disable-next-line @next/next/no-img-element -- the intro preloads this optimiser URL. */}
-              <img src={opt(portrait, 828)} alt={`Portrait of ${name}`} loading="lazy" decoding="async" />
-            </motion.div>
+            <div className="s-about-clip">
+              <motion.div className="s-about-img" style={{ y: lift }}>
+                {/* eslint-disable-next-line @next/next/no-img-element -- the intro preloads this optimiser URL. */}
+                <img src={opt(portrait, 828)} alt={`Portrait of ${name}`} loading="lazy" decoding="async" />
+              </motion.div>
+            </div>
           </div>
           <figcaption>Consignor · {name}</figcaption>
         </figure>

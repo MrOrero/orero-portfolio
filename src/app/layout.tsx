@@ -1,13 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, Big_Shoulders, Big_Shoulders_Stencil } from "next/font/google";
+import { Archivo, Big_Shoulders } from "next/font/google";
 import { person } from "@/content";
 import { introScript } from "@/lib/intro-key";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
-// Stencil for anything painted on steel, its solid sibling for labels, a sturdy grotesque for reading.
-const stencil = Big_Shoulders_Stencil({ subsets: ["latin"], weight: ["800", "900"], variable: "--s-stencil", adjustFontFallback: false, fallback: ["Impact", "sans-serif"] });
-const shoulders = Big_Shoulders({ subsets: ["latin"], weight: ["600", "800"], variable: "--s-label", adjustFontFallback: false, fallback: ["Arial Narrow", "sans-serif"] });
+// Big Shoulders for headings and labels, a sturdy grotesque for reading.
+const shoulders = Big_Shoulders({ subsets: ["latin"], weight: ["600", "800", "900"], variable: "--s-label", adjustFontFallback: false, fallback: ["Arial Narrow", "Impact", "sans-serif"] });
 const body = Archivo({ subsets: ["latin"], variable: "--s-body" });
 
 const title = `${person.name} · ${person.role}`;
@@ -33,7 +32,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     // The inline script may mark <html> (intro already seen) before React hydrates.
     <html lang="en" suppressHydrationWarning>
       <body className="antialiased">
-        <div id="top" className={`${stencil.variable} ${shoulders.variable} ${body.variable} shipped`}>
+        <div id="top" className={`${shoulders.variable} ${body.variable} shipped`}>
           <script dangerouslySetInnerHTML={{ __html: introScript("home") }} />
           <noscript>
             <style>{".s-intro{display:none}"}</style>
